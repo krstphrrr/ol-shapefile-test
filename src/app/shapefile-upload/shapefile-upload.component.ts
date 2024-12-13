@@ -218,12 +218,20 @@ export class ShapefileUploadComponent {
   }
 
   clearLayer(): void {
-    if (this.shapefileLayer) {
-      this.map.removeLayer(this.shapefileLayer);
-      this.shapefileLayer = undefined!;
-      this.setStatus('Layer cleared. Ready for new upload.');
-      this.map.getView().setCenter([-10968310.601, 4512834.218]);
-      this.map.getView().setZoom(6);
+   
+    const layers = this.map.getLayers().getArray();
+  
+    
+    for (const layer of layers) {
+      if (layer instanceof VectorLayer) {
+        this.map.removeLayer(layer);
+      }
     }
+  
+    this.shapefileLayer = undefined!;
+    this.setStatus('All layers cleared. Ready for new upload.');
+  
+    this.map.getView().setCenter([-10968310.601, 4512834.218]); 
+    this.map.getView().setZoom(6); 
   }
 }
