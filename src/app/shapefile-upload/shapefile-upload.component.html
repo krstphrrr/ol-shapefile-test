@@ -1,5 +1,7 @@
 <div class="floating-control">
-    <label for="shapefileInput">Upload Shapefile (or ZIP):</label>
-    <input type="file" id="shapefileInput" (change)="onFileSelected($event)" />
-    <button (click)="toggleLayer()">Toggle Layer</button>
-  </div>
+  <label for="shapefileInput">Upload Shapefile (or ZIP):</label>
+  <input type="file" id="shapefileInput" (change)="onFileSelected($event)" />
+  <button (click)="toggleLayer()">Toggle Layer</button>
+  <button (click)="clearLayer()">Clear Layer</button>
+  <p>{{ statusMessage }}</p>
+</div>
