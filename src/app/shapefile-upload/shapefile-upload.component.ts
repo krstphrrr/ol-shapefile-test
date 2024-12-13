@@ -186,6 +186,7 @@ export class ShapefileUploadComponent {
   }
 
   addShapefileLayer(geojson: any, projection: string): void {
+    this.clearLayer()
     const source = new VectorSource<FeatureLike>({
       features: new GeoJSON().readFeatures(geojson, {
         dataProjection: projection,
